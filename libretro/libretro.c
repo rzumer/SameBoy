@@ -1054,6 +1054,9 @@ bool retro_unserialize(const void *data, size_t size)
 
 void *retro_get_memory_data(unsigned type)
 {
+    if (!initialized)
+        return 0;
+
     void *data = NULL;
     if (emulated_devices == 1)
     {
@@ -1119,6 +1122,9 @@ void *retro_get_memory_data(unsigned type)
 
 size_t retro_get_memory_size(unsigned type)
 {
+    if (!initialized)
+        return 0;
+
     size_t size = 0;
     if (emulated_devices == 1)
     {
